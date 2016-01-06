@@ -1,0 +1,3 @@
+curl --user test --data-binary '{"jsonrpc":"1.0","id":"curltext","method":"setgenerate","params":[true, 100]}' -H 'content-type:text/plain;' http://172.17.0.12:18332/
+
+curl --user test --data-binary '{"jsonrpc":"1.0","id":"curltext","method":"getinfo","params":[]}' -H 'content-type:text/plain;' http://172.17.0.12:18332/
