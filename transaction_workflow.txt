@@ -1,0 +1,23 @@
+This describes how to create a bitcoin transaction from Alice to Bob, sign it,
+and mine it, all by using the command line with bitcoin-cli. Note that these
+commands can be executed directly on the node or via the RPC server.
+
+1) Create 3 nodes: Alice, Bob and miner Mike.
+2) Start up bitcoin bitcoind on Alice, Bob and Mike using:
+      bitcoind -regtest -daemon -printtoconsole
+3) Connect Alice and Bob as peers:
+      bitcoin-cli -regtest addnode 172.17.0.X onetry
+4) Confirm they are peers:
+      bitcoin-cli -regtest getpeerinfo
+5) Do the same for Mike and Bob
+6) Generate a block for Alice and Bob (to give them some currency)
+      bitcoin-cli -regtest setgenerate true
+7) Mine 100 blocks with Mike to confirm the two blocks mined by
+   Alice and Bob, releasing 50 BTC each.
+      bitcoin-cli -regtest setgenerate true 100
+8) Get a new address for Bob
+      bitcoin-cli -regtest getnewaddress
+9) Send some BTC from Alice to this address
+      bitcoin-cli -regtest sendtoaddress XXX 12.5
+10) Mine 6 blocks with Mike to confirm the transaction
+      bitcoin-cli -regtest setgenerate true 6
